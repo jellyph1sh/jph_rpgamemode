@@ -1,1 +1,3 @@
-RegisterCommand("savepos", SavePlayer, false)
+RegisterCommand("savepos", function(src)
+    SavePlayer(src)
+end, false)

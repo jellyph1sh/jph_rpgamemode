@@ -6,17 +6,16 @@ end
 function GetPlayerInfo()
     local src = source
     local identifier = GetIdentifier(src)
-    local response = MySQL.prepare.await('SELECT identifier, position FROM users WHERE identifier = ?;', {identifier})
+    local response = MySQL.prepare.await('SELECT position FROM users WHERE identifier = ?;', {identifier})
     if response == nil then
         MySQL.insert.await('INSERT INTO users (identifier, position) VALUES (?, ?);', {identifier, json.encode(Config.DefaultPosition)})
         TriggerClientEvent("jph_rpgamemode:SpawnPlayer", src, Config.DefaultPosition)
         return
     end
-    TriggerClientEvent("jph_rpgamemode:SpawnPlayer", src, json.decode(response.position))
+    TriggerClientEvent("jph_rpgamemode:SpawnPlayer", src, json.decode(response))
 end
 
-function SavePlayer()
-    local src = source
+function SavePlayer(src)
     local identifier = GetIdentifier(src)
     local ped = GetPlayerPed(src)
     local x, y, z = table.unpack(GetEntityCoords(ped))
