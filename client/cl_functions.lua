@@ -28,3 +28,7 @@ function DeathSystem()
         end
     end)
 end
+
+RegisterCommand("inventory", function(src)
+    TriggerServerEvent("jph_rpgamemode:GetInventory")
+end, false)
