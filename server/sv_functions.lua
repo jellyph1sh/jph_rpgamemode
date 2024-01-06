@@ -29,6 +29,7 @@ end
 
 function InventoryContain(identifier, item)
     local inventory = GetInventory(identifier)
+    if inventory == nil then return 0 end
     if #inventory > 1 then
         for _, i in pairs(inventory) do
             if (i.name == item) then
