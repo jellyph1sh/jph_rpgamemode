@@ -80,7 +80,6 @@ INSERT INTO `users` (`identifier`, `firstname`, `lastname`, `sex`, `height`, `sk
 -- Indexes for table `inventories`
 --
 ALTER TABLE `inventories`
-  ADD PRIMARY KEY (`user_id`),
   ADD KEY `user_id` (`user_id`),
   ADD KEY `item_id` (`item_id`);
 
